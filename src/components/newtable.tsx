@@ -10,9 +10,7 @@ import {
 function NewTable() {
   return (
     <>
-      <div className="w-full  flex flex-row items-center justify-between p-4 rounded-xl mt-4">
-        <p className="font-medium text-lg font-serif pl-2">External Assets</p>
-      </div>
+      
       <div className="pr-15 pl-15">
         <Table>
           <TableHeader>

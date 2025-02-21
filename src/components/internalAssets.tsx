@@ -1,5 +1,5 @@
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Table } from "./ui/table";
+import NewTable from "./newtable";
 
 function Internal() {
   return (
@@ -15,8 +15,9 @@ function Internal() {
           <TabsTrigger value="stocks">STOCKS</TabsTrigger>
         </TabsList>
       </Tabs>
-
-      <Table />
+      <div className="w-full h-screen bg-white rounded-xl mt-10 ">
+        <NewTable />
+      </div>
     </div>
   );
 }
