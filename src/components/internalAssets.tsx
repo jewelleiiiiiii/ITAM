@@ -1,4 +1,5 @@
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Table } from "./ui/table";
 
 function Internal() {
   return (
@@ -15,15 +16,7 @@ function Internal() {
         </TabsList>
       </Tabs>
 
-      {/* <table className="border-collapse border border-gray-400 table-fixed w-full">
-          <thead>
-            <tr>
-              <th className="w-1/3 text-center">Sample</th>
-              <th className="w-1/3 text-center">Sample</th>
-              <th className="w-1/3 text-center">Sample</th>
-            </tr>
-          </thead>
-        </table> */}
+      <Table />
     </div>
   );
 }
