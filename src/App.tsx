@@ -8,6 +8,15 @@ import Issuance from "./components/issuance";
 import Internal from "./components/internalAssets";
 import External from "./components/externalAssets";
 
+const routes = [
+  { path: "/", element: <Dashboard /> },
+  { path: "/Internal", element: <Internal /> },
+  { path: "/External", element: <External /> },
+  { path: "/Borrowed", element: <Borrowed /> },
+  { path: "/Repair", element: <Repair /> },
+  { path: "/Issuance", element: <Issuance /> },
+];
+
 function App() {
   return (
     <>
@@ -15,12 +24,9 @@ function App() {
       <div className="flex flex-row bg-slate-50">
         <Sidebar />
         <Routes>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/Internal" element={<Internal />} />
-          <Route path="/External" element={<External />} />
-          <Route path="/Borrowed" element={<Borrowed />} />
-          <Route path="/Repair" element={<Repair />} />
-          <Route path="/Issuance" element={<Issuance />} />
+          {routes.map(({ path, element }) => (
+            <Route key={path} path={path} element={element} />
+          ))}
         </Routes>
       </div>
     </>
