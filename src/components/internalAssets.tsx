@@ -3,7 +3,7 @@ import { Table } from "./ui/table";
 
 function Internal() {
   return (
-    <div className="w-full h-screen bg-amber-100 rounded-xl m-10">
+    <div className="w-full h-screen bg-white rounded-xl m-10">
       <Tabs defaultValue="laptop" className="w-full">
         <TabsList className="w-full">
           <TabsTrigger value="laptop">LAPTOP</TabsTrigger>
