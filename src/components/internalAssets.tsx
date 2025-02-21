@@ -1,6 +1,6 @@
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-function Assets() {
+function Internal() {
   return (
     <div className="w-full h-screen bg-amber-100 rounded-xl m-10">
       <Tabs defaultValue="laptop" className="w-full">
@@ -28,4 +28,4 @@ function Assets() {
   );
 }
 
-export default Assets;
+export default Internal;

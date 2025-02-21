@@ -6,6 +6,11 @@ import {
   Wrench,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card";
 
 function Sidebar() {
   return (
@@ -19,15 +24,27 @@ function Sidebar() {
         />
         <p className="text-white text-xs font-light">Dashboard</p>
       </Link>
-      <Link to="/Assets" className="flex flex-col items-center">
-        <ClipboardCheck
-          size={30}
-          color="#ffffff"
-          className="mt-8"
-          strokeWidth={1.5}
-        />
-        <p className="text-white text-xs font-light">Assets</p>
-      </Link>
+      <HoverCard>
+        <HoverCardTrigger>
+          <Link to="/Internal" className="flex flex-col items-center">
+            <ClipboardCheck
+              size={30}
+              color="#ffffff"
+              className="mt-8"
+              strokeWidth={1.5}
+            />
+            <p className="text-white text-xs font-light">Assets</p>
+          </Link>
+        </HoverCardTrigger>
+        <HoverCardContent>
+          <Link to="/Internal" className="flex flex-col items-center">
+            <p className="hover:bg-gray-200 px-2 py-1 rounded">Internal</p>
+          </Link>
+          <Link to="/External" className="flex flex-col items-center">
+            <p className="hover:bg-gray-200 px-2 py-1 rounded">External</p>{" "}
+          </Link>
+        </HoverCardContent>
+      </HoverCard>
       <Link to="/Borrowed" className="flex flex-col items-center">
         <Package size={30} color="#ffffff" className="mt-8" strokeWidth={1.5} />
         <p className="text-white text-xs font-light">Borrowed</p>
