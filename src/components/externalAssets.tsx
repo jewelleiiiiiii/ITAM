@@ -61,10 +61,10 @@ function External() {
   return (
     <>
       <div className="w-full h-screen bg-white rounded-xl m-10 ">
-        <p className="font-medium text-lg font-serif mt-5 px-10">
+        <p className="font-medium text-lg mt-5 px-10">
           External Assets
         </p>
-        <div className="container py-3 mt-0">
+        <div className="container py-2 mt-0">
           <ExternalDataTable columns={columns} data={data} />
         </div>
       </div>
