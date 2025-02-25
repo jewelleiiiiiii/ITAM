@@ -1,13 +1,61 @@
-import NewTable from "./newtable";
+import { columns, RepairAsset } from "./repairColumns";
+import { RepairDataTable } from "./repairTable";
 
-function Repair() {
+export default function Repair() {
+  const data: RepairAsset[] = [
+    {
+      id: "1",
+      userId: 1,
+      userName: "Jewel Lei",
+      assetId: 1,
+      assetName: "Repair Asset 1",
+      issue: "Secret",
+      remarks: "Secret",
+      dateReported: "02/24/2025",
+      urgencyLevel: "Urgent",
+      repairStartDate: "02/24/2025",
+      repairCompletionDate: "N/A",
+      status: "Ongoing",
+      repairCost: 1000000,
+    },
+    {
+      id: "3",
+      userId: 3,
+      userName: "Jewel Lei 3",
+      assetId: 3,
+      assetName: "Repair Asset 3",
+      issue: "Secret",
+      remarks: "Secret",
+      dateReported: "02/24/2025",
+      urgencyLevel: "Urgent",
+      repairStartDate: "02/24/2025",
+      repairCompletionDate: "N/A",
+      status: "Ongoing",
+      repairCost: 1000000,
+    },
+    {
+      id: "2",
+      userId: 2,
+      userName: "Jewel Lei 2",
+      assetId: 2,
+      assetName: "Repair Asset 2",
+      issue: "Secret",
+      remarks: "Secret",
+      dateReported: "02/24/2025",
+      urgencyLevel: "Urgent",
+      repairStartDate: "02/24/2025",
+      repairCompletionDate: "N/A",
+      status: "Ongoing",
+      repairCost: 1000000,
+    },
+  ];
+
   return (
-    <div className="w-full h-screen bg-white rounded-xl m-10">
-      <p className="font-medium text-lg font-serif pl-2 mt-5 ml-2">Repair</p>
-      <NewTable />
-      
+    <div className="w-full h-screen bg-white rounded-xl m-10 ">
+      <p className="font-medium text-lg mt-5 px-10">Repair Assets</p>
+      <div className="container py-3 mt-0">
+        <RepairDataTable columns={columns} data={data} />
+      </div>
     </div>
   );
 }
-
-export default Repair;

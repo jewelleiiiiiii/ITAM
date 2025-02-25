@@ -12,26 +12,21 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Checkbox } from "@/components/ui/checkbox";
 
-export type InternalAsset = {
+export type BorrowedAsset = {
   id: string;
-  name: string;
-  category: "External" | "Internal";
-  subCategory: "Gantry Routers" | "Laptop" | "Printers" | "Access Point" | "Routers and Switch" | "Stocks";
-  type: "None" | "Mouse" | "Keyboard" | "Printers" | "UPS Battery" | "Numeric Keypad";
-  condition: "Good" | "Slightly Damaged" | "Damaged";
-  location: string;
-  availabilityStatus: "Available" | "Not Available";
-  serialNumber: string;
-  specifications: string;
-  amount: number;
-  warrantyDuration: number;
-  warrantyDueDate: string;
-  purchaseDate: string;
-  aging: number;
-  notes: string;
+  userId: number;
+  userName: string;
+  assetId: number;
+  assetName: string;
+  dateBorrowed: string;
+  dueDate: string;
+  returnDate: string;
+  duration: string;
+  condition: string;
+  remarks: string;
 };
 
-export const columns: ColumnDef<InternalAsset>[] = [
+export const columns: ColumnDef<BorrowedAsset>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -55,44 +50,56 @@ export const columns: ColumnDef<InternalAsset>[] = [
     enableHiding: false,
   },
   {
-    accessorKey: "name",
+    accessorKey: "assetName",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Name
+          Asset Name
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );
     },
   },
+  // {
+  //   accessorKey: "userName",
+  //   header: "User Name",
+  // },
+  // {
+  //   accessorKey: "issue",
+  //   header: "Issue",
+  // },
+  // {
+  //   accessorKey: "remarks",
+  //   header: "Remarks",
+  // },
+  // {
+  //   accessorKey: "dateReported",
+  //   header: "Date Reported",
+  // },
+  // {
+  //   accessorKey: "urgencyLevel",
+  //   header: "Urgency Level",
+  // },
+  // {
+  //   accessorKey: "repairStartDate",
+  //   header: "Start Date",
+  // },
+  // {
+  //   accessorKey: "repairCompletionDate",
+  //   header: "End Date",
+  // },
+  // {
+  //   accessorKey: "status",
+  //   header: "Status",
+  // },
   {
-    accessorKey: "condition",
-    header: "Condition",
-  },
-  {
-    accessorKey: "location",
-    header: "Location",
-  },
-  {
-    accessorKey: "availabilityStatus",
-    header: "Status",
-  },
-  {
-    accessorKey: "serialNumber",
-    header: "Serial Number",
-  },
-  {
-    accessorKey: "specifications",
-    header: "Specifications",
-  },
-  {
-    accessorKey: "amount",
-    header: () => <div className="text-right">Amount</div>,
+    accessorKey: "repairCost",
+    header: () => <div className="text-right">Cost</div>,
     cell: ({ row }) => {
-      const amount = parseFloat(row.getValue("amount"));
+      const amount = parseFloat(row.getValue("repairCost"));
       const formatted = new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "Php",
@@ -102,29 +109,9 @@ export const columns: ColumnDef<InternalAsset>[] = [
     },
   },
   {
-    accessorKey: "warrantyDuration",
-    header: "Warranty Duration",
-  },
-  {
-    accessorKey: "warrantyDueDate",
-    header: "Warranty Due Date",
-  },
-  {
-    accessorKey: "purchaseDate",
-    header: "Purchase Date",
-  },
-  {
-    accessorKey: "aging",
-    header: "Aging",
-  },
-  {
-    accessorKey: "notes",
-    header: "Notes",
-  },
-  {
     id: "actions",
     cell: ({ row }) => {
-      const internal = row.original;
+      const borrow = row.original;
 
       return (
         <DropdownMenu>
@@ -137,7 +124,7 @@ export const columns: ColumnDef<InternalAsset>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(internal.id)}
+              onClick={() => navigator.clipboard.writeText(borrow.id)}
             >
               Copy Asset ID
             </DropdownMenuItem>

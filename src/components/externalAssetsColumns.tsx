@@ -16,7 +16,7 @@ export type ExternalAsset = {
   id: string;
   name: string;
   category: "External" | "Internal";
-  subCategory: "Gantry Routers" | "Laptop" | "Printers" | "Access Point" | "Routers and Switch";
+  subCategory: "Gantry Routers" | "Laptop" | "Printers" | "Access Point" | "Routers and Switch" | "Stocks";
   type: "None" | "Mouse" | "Keyboard" | "Printers" | "UPS Battery" | "Numeric Keypad";
   condition: "Good" | "Slightly Damaged" | "Damaged";
   location: string;
