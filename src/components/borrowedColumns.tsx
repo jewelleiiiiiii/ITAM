@@ -63,50 +63,33 @@ export const columns: ColumnDef<BorrowedAsset>[] = [
       );
     },
   },
-  // {
-  //   accessorKey: "userName",
-  //   header: "User Name",
-  // },
-  // {
-  //   accessorKey: "issue",
-  //   header: "Issue",
-  // },
-  // {
-  //   accessorKey: "remarks",
-  //   header: "Remarks",
-  // },
-  // {
-  //   accessorKey: "dateReported",
-  //   header: "Date Reported",
-  // },
-  // {
-  //   accessorKey: "urgencyLevel",
-  //   header: "Urgency Level",
-  // },
-  // {
-  //   accessorKey: "repairStartDate",
-  //   header: "Start Date",
-  // },
-  // {
-  //   accessorKey: "repairCompletionDate",
-  //   header: "End Date",
-  // },
-  // {
-  //   accessorKey: "status",
-  //   header: "Status",
-  // },
   {
-    accessorKey: "repairCost",
-    header: () => <div className="text-right">Cost</div>,
-    cell: ({ row }) => {
-      const amount = parseFloat(row.getValue("repairCost"));
-      const formatted = new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "Php",
-      }).format(amount);
-
-      return <div className="text-right font-medium">{formatted}</div>;
-    },
+    accessorKey: "userName",
+    header: "User Name",
+  },
+  {
+    accessorKey: "dateBorrowed",
+    header: "Date Borrowed",
+  },
+  {
+    accessorKey: "dueDate",
+    header: "Due Date",
+  },
+  {
+    accessorKey: "returnDate",
+    header: "Return Date",
+  },
+  {
+    accessorKey: "duration",
+    header: "Duration",
+  },
+  {
+    accessorKey: "condition",
+    header: "Condition",
+  },
+  {
+    accessorKey: "remarks",
+    header: "Remarks",
   },
   {
     id: "actions",
@@ -129,8 +112,8 @@ export const columns: ColumnDef<BorrowedAsset>[] = [
               Copy Asset ID
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>View Asset details</DropdownMenuItem>
-            <DropdownMenuItem>Edit Asset details</DropdownMenuItem>
+            <DropdownMenuItem>View Borrow details</DropdownMenuItem>
+            <DropdownMenuItem>Edit Borrow details</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );
