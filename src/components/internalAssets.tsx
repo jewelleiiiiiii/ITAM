@@ -6,7 +6,7 @@ export default function Internal() {
   const data: InternalAsset[] = [
     {
       id: "728ed52f",
-      name: "Internal Asset 3",
+      assetName: "Internal Asset 3",
       category: "Internal",
       subCategory: "Laptop",
       type: "None",
@@ -24,7 +24,7 @@ export default function Internal() {
     },
     {
       id: "728ed52g",
-      name: "Internal Asset 1",
+      assetName: "Internal Asset 1",
       category: "Internal",
       subCategory: "Stocks",
       type: "Mouse",
@@ -42,7 +42,7 @@ export default function Internal() {
     },
     {
       id: "728ed52h",
-      name: "Internal Asset 2",
+      assetName: "Internal Asset 2",
       category: "Internal",
       subCategory: "Printers",
       type: "None",

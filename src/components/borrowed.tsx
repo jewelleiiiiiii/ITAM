@@ -6,7 +6,7 @@ export default function Borrowed() {
     {
       id: "3",
       userId: 1,
-      userName: "Jewel Lei",
+      userName: "Jewel Lei 3",
       assetId: 1,
       assetName: "Borrowed Asset 3",
       dateBorrowed: "02/24/2025",
@@ -16,7 +16,19 @@ export default function Borrowed() {
       condition: "Good",
       remarks: "None",
     },
-    
+    {
+    id: "2",
+      userId: 2,
+      userName: "Jewel Lei 2",
+      assetId: 2,
+      assetName: "Borrowed Asset 2",
+      dateBorrowed: "02/24/2025",
+      dueDate: "N/A",
+      returnDate: "N/A",
+      duration: "100 days",
+      condition: "Good",
+      remarks: "None",
+    },
   ];
 
   return (

@@ -31,6 +31,16 @@ import {
 
 import { Button } from "@/components/ui/button";
 
+import { format } from "date-fns";
+import { Calendar as CalendarIcon, ListFilter, Plus } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { Calendar } from "@/components/ui/calendar";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+
 import * as React from "react";
 
 interface ExternalDataTableProps<TData, TValue> {
@@ -66,44 +76,81 @@ export function ExternalDataTable<TData, TValue>({
       rowSelection,
     },
   });
+    const [date, setDate] = React.useState<Date>();
 
   return (
     <div className="pl-10 pr-10 pb-10">
-      <div className="flex items-center py-4">
-        <Input
-          placeholder="Search Asset"
-          value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
-          onChange={(event) =>
-            table.getColumn("name")?.setFilterValue(event.target.value)
-          }
-          className="max-w-sm"
-        />
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline" className="ml-auto">
-              Columns
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            {table
-              .getAllColumns()
-              .filter((column) => column.getCanHide())
-              .map((column) => {
-                return (
-                  <DropdownMenuCheckboxItem
-                    key={column.id}
-                    className="capitalize"
-                    checked={column.getIsVisible()}
-                    onCheckedChange={(value) =>
-                      column.toggleVisibility(!!value)
-                    }
-                  >
-                    {column.id}
-                  </DropdownMenuCheckboxItem>
-                );
-              })}
-          </DropdownMenuContent>
-        </DropdownMenu>
+      <div className="flex justify-between">
+        <div className="flex items-center py-4 justify-start">
+          <Input
+            placeholder="Search Asset"
+            value={
+              (table.getColumn("assetName")?.getFilterValue() as string) ?? ""
+            }
+            onChange={(event) =>
+              table.getColumn("assetName")?.setFilterValue(event.target.value)
+            }
+            className="max-w-md min-w-sm"
+          />
+        </div>
+        <div className="flex justify-end gap-2 items-center">
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button
+                variant={"outline"}
+                className={cn(
+                  "w-[30px] justify-center text-center font-normal",
+                  !date && "text-muted-foreground"
+                )}
+              >
+                <CalendarIcon className="m-auto h-4 w-4 p-auto" />
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-auto p-0">
+              <Calendar
+                mode="single"
+                selected={date}
+                onSelect={setDate}
+                initialFocus
+              />
+            </PopoverContent>
+          </Popover>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" className="w-[30px] justify-center text-center font-normal">
+              <ListFilter className="m-auto h-4 w-4 p-auto"/>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              {table
+                .getAllColumns()
+                .filter((column) => column.getCanHide())
+                .map((column) => {
+                  return (
+                    <DropdownMenuCheckboxItem
+                      key={column.id}
+                      className="capitalize"
+                      checked={column.getIsVisible()}
+                      onCheckedChange={(value) =>
+                        column.toggleVisibility(!!value)
+                      }
+                    >
+                      {column.id}
+                    </DropdownMenuCheckboxItem>
+                  );
+                })}
+            </DropdownMenuContent>
+          </DropdownMenu>
+          <Button
+            variant={"outline"}
+            className={cn(
+              "w-[30px] justify-center text-center font-normal",
+              !date && "text-muted-foreground"
+            )}
+          >
+            <Plus className="m-auto h-4 w-4 p-auto" />
+          </Button>
+        </div>
       </div>
       <div className="rounded-md border-1px-gray">
         <Table>

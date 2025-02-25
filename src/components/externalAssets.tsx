@@ -5,7 +5,7 @@ function External() {
   const data:ExternalAsset[] = [
     {
       id: "728ed52f",
-      name: "External Asset 3",
+      assetName: "External Asset 3",
       category: "External",
       subCategory: "Gantry Routers",
       type: "None",
@@ -23,7 +23,7 @@ function External() {
     },
     {
       id: "728ed52g",
-      name: "External Asset 1",
+      assetName: "External Asset 1",
       category: "External",
       subCategory: "Gantry Routers",
       type: "None",
@@ -41,7 +41,7 @@ function External() {
     },
     {
       id: "728ed52h",
-      name: "External Asset 2",
+      assetName: "External Asset 2",
       category: "External",
       subCategory: "Gantry Routers",
       type: "None",

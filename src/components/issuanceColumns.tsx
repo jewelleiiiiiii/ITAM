@@ -12,23 +12,19 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Checkbox } from "@/components/ui/checkbox";
 
-export type RepairAsset = {
+
+
+export type IssuanceAsset = {
   id: string;
   userId: number;
   userName: string;
   assetId: number;
   assetName: string;
-  issue: string;
-  remarks: string;
-  dateReported: string;
-  urgencyLevel: string;
-  repairStartDate: string;
-  repairCompletionDate: string;
+  issuanceDate: string;
   status: string;
-  repairCost: number;
 };
 
-export const columns: ColumnDef<RepairAsset>[] = [
+export const columns: ColumnDef<IssuanceAsset>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -70,50 +66,17 @@ export const columns: ColumnDef<RepairAsset>[] = [
     header: "User Name",
   },
   {
-    accessorKey: "issue",
-    header: "Issue",
-  },
-  {
-    accessorKey: "remarks",
-    header: "Remarks",
-  },
-  {
-    accessorKey: "dateReported",
-    header: "Date Reported",
-  },
-  {
-    accessorKey: "urgencyLevel",
-    header: "Urgency Level",
-  },
-  {
-    accessorKey: "repairStartDate",
-    header: "Start Date",
-  },
-  {
-    accessorKey: "repairCompletionDate",
-    header: "End Date",
+    accessorKey: "issuanceDate",
+    header: "Issuance Date",
   },
   {
     accessorKey: "status",
     header: "Status",
   },
   {
-    accessorKey: "repairCost",
-    header: () => <div className="text-right">Cost</div>,
-    cell: ({ row }) => {
-      const amount = parseFloat(row.getValue("repairCost"));
-      const formatted = new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "Php",
-      }).format(amount);
-
-      return <div className="text-right font-medium">{formatted}</div>;
-    },
-  },
-  {
     id: "actions",
     cell: ({ row }) => {
-      const repair = row.original;
+      const issuance = row.original;
 
       return (
         <DropdownMenu>
@@ -126,13 +89,13 @@ export const columns: ColumnDef<RepairAsset>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(repair.id)}
+              onClick={() => navigator.clipboard.writeText(issuance.id)}
             >
-              Copy Repair ID
+              Copy Issuance ID
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>View Repair details</DropdownMenuItem>
-            <DropdownMenuItem>Edit Repair details</DropdownMenuItem>
+            <DropdownMenuItem>View Issuance details</DropdownMenuItem>
+            <DropdownMenuItem>Edit Issuance details</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );

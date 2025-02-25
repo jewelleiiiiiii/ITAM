@@ -11,16 +11,6 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 
-import { format } from "date-fns";
-import { Calendar as CalendarIcon, ListFilter, Plus } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { Calendar } from "@/components/ui/calendar";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -41,22 +31,33 @@ import {
 
 import { Button } from "@/components/ui/button";
 
+import { format } from "date-fns";
+import { Calendar as CalendarIcon, ListFilter, Plus } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { Calendar } from "@/components/ui/calendar";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+
 import * as React from "react";
 
-interface BorrowedDataTableProps<TData, TValue> {
+interface IssuanceDataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
 }
 
-export function BorrowedDataTable<TData, TValue>({
+export function IssuanceDataTable<TData, TValue>({
   columns,
   data,
-}: BorrowedDataTableProps<TData, TValue>) {
+}: IssuanceDataTableProps<TData, TValue>) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
   );
-  const [] = React.useState<VisibilityState>({});
+  const [] =
+    React.useState<VisibilityState>({});
 
   const [rowSelection, setRowSelection] = React.useState({});
   const table = useReactTable({
@@ -75,6 +76,7 @@ export function BorrowedDataTable<TData, TValue>({
       rowSelection,
     },
   });
+
   const [date, setDate] = React.useState<Date>();
 
   return (
@@ -82,7 +84,7 @@ export function BorrowedDataTable<TData, TValue>({
       <div className="flex justify-between">
         <div className="flex items-center py-4 justify-start">
           <Input
-            placeholder="Search Borrower"
+            placeholder="Search Name"
             value={
               (table.getColumn("userName")?.getFilterValue() as string) ?? ""
             }
@@ -144,24 +146,20 @@ export function BorrowedDataTable<TData, TValue>({
             variant={"outline"}
             className={cn(
               "w-[30px] justify-center text-center font-normal",
-              !date && "text-muted-foreground"
             )}
           >
             <Plus className="m-auto h-4 w-4 p-auto" />
           </Button>
         </div>
       </div>
-      <div className="rounded-md border-1px-gray justify-start text-left">
-        <Table className="justify-start text-left">
-          <TableHeader className="justify-start text-left">
+      <div className="rounded-md border-1px-gray">
+        <Table>
+          <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id} justify-start text-left>
+              <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
                   return (
-                    <TableHead
-                      key={header.id}
-                      className="justify-start text-left"
-                    >
+                    <TableHead key={header.id}>
                       {header.isPlaceholder
                         ? null
                         : flexRender(
@@ -193,7 +191,10 @@ export function BorrowedDataTable<TData, TValue>({
               ))
             ) : (
               <TableRow>
-                <TableCell colSpan={columns.length} className="h-24 text-left">
+                <TableCell
+                  colSpan={columns.length}
+                  className="h-24 text-center"
+                >
                   No results.
                 </TableCell>
               </TableRow>

@@ -14,7 +14,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 
 export type ExternalAsset = {
   id: string;
-  name: string;
+  assetName: string;
   category: "External" | "Internal";
   subCategory: "Gantry Routers" | "Laptop" | "Printers" | "Access Point" | "Routers and Switch" | "Stocks";
   type: "None" | "Mouse" | "Keyboard" | "Printers" | "UPS Battery" | "Numeric Keypad";
@@ -55,7 +55,7 @@ export const columns: ColumnDef<ExternalAsset>[] = [
     enableHiding: false,
   },
   {
-    accessorKey: "name",
+    accessorKey: "assetName",
     header: ({ column }) => {
       return (
         <Button
@@ -139,11 +139,11 @@ export const columns: ColumnDef<ExternalAsset>[] = [
             <DropdownMenuItem
               onClick={() => navigator.clipboard.writeText(external.id)}
             >
-              Copy Asset ID
+              Copy External Asset ID
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>View Asset details</DropdownMenuItem>
-            <DropdownMenuItem>Edit Asset details</DropdownMenuItem>
+            <DropdownMenuItem>View External Asset details</DropdownMenuItem>
+            <DropdownMenuItem>Edit External Asset details</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );
