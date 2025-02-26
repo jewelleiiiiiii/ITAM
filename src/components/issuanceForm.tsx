@@ -4,10 +4,8 @@ import { useForm } from "react-hook-form";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
@@ -33,22 +31,20 @@ import {
 } from "@/components/ui/popover";
 
 const formSchema = z.object({
-  department: z.string().min(2).max(50),
-  name: z.string().min(2).max(50),
-  issue: z.string().min(2).max(100),
-  remarks: z.string().min(2).max(100),
-  urgencyLevel: z.string().min(2).max(100),
+  employeeName: z.string().min(2).max(50),
+  assetName: z.string().min(2).max(50),
+  issuanceDate: z.date(),
+  status: z.string().min(2).max(50),
 });
 
 function IssuanceForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      department: "",
-      name: "",
-      issue: "",
-      remarks: "",
-      urgencyLevel: "",
+      employeeName: "",
+      assetName: "",
+      issuanceDate: undefined,
+      status: "",
     },
   });
 
@@ -65,27 +61,15 @@ function IssuanceForm() {
             <div className="w-1/2">
               <FormField
                 control={form.control}
-                name="department"
+                name="employeeName"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Department</FormLabel>
                     <FormControl>
-                      <Select>
-                        <SelectTrigger className="w-full">
-                          <SelectValue placeholder="Deparment" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="Department 1">
-                            Department 1
-                          </SelectItem>
-                          <SelectItem value="Department 1">
-                            Department 2
-                          </SelectItem>
-                          <SelectItem value="Department 1">
-                            Department 3
-                          </SelectItem>
-                        </SelectContent>
-                      </Select>
+                      <Input
+                        type="name"
+                        placeholder="Employee Name"
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -95,16 +79,11 @@ function IssuanceForm() {
             <div className="w-1/2">
               <FormField
                 control={form.control}
-                name="name"
+                name="assetName"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Requester Name</FormLabel>
                     <FormControl>
-                      <Input
-                        type="name"
-                        placeholder="Requester Name"
-                        {...field}
-                      />
+                      <Input type="name" placeholder="Asset Name" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -112,71 +91,37 @@ function IssuanceForm() {
               />
             </div>
           </div>
-          <div className="">
+          <div className="w-full">
             <FormField
               control={form.control}
-              name="issue"
+              name="issuanceDate"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Issue</FormLabel>
-                  <FormControl>
-                    <Input type="issue" placeholder="Issue" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
-
-          <div className="">
-            <FormField
-              control={form.control}
-              name="remarks"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Remarks</FormLabel>
-                  <FormControl>
-                    <Textarea
-                      {...field}
-                      placeholder="Type your remarks here."
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
-<div className="flex gap-10">
-          <div className="w-1/2">
-            <FormField
-              control={form.control}
-              name="remarks"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Date Reported</FormLabel>
                   <FormControl>
                     <Popover>
                       <PopoverTrigger asChild>
                         <Button
-                          variant={"outline"}
+                          variant="outline"
                           className={cn(
                             "w-full justify-start text-left font-normal",
-                            !date && "text-muted-foreground"
+                            !field.value && "text-muted-foreground"
                           )}
                         >
-                          <CalendarIcon />
-                          {date ? (
-                            format(date, "PPP")
+                          <CalendarIcon className="mr-2 h-4 w-4 text-[#737373]" />
+                          {field.value ? (
+                            format(field.value, "PPP")
                           ) : (
-                            <span>Date Reported</span>
+                            <span className="text-[#737373]">
+                              Issuance Date
+                            </span>
                           )}
                         </Button>
                       </PopoverTrigger>
                       <PopoverContent className="w-auto p-0" align="start">
                         <Calendar
                           mode="single"
-                          selected={date}
-                          onSelect={setDate}
+                          selected={field.value}
+                          onSelect={field.onChange}
                           initialFocus
                         />
                       </PopoverContent>
@@ -187,38 +132,25 @@ function IssuanceForm() {
               )}
             />
           </div>
-          <div className="w-1/2">
-              <FormField
-                control={form.control}
-                name="urgencyLevel"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Urgency Level</FormLabel>
-                    <FormControl>
-                      <Select>
-                        <SelectTrigger className="w-full">
-                          <SelectValue placeholder="Urgency Level" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="Urgent">
-                            Urgent
-                          </SelectItem>
-                          <SelectItem value="Department 1">
-                            Department 2
-                          </SelectItem>
-                          <SelectItem value="Department 1">
-                            Department 3
-                          </SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
-            </div>
-          <Button type="submit">Submit</Button>
+          <div className="w-full">
+            <FormField
+              control={form.control}
+              name="status"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input type="name" placeholder="Status" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+          <div>
+            <Button className="w-full" type="submit">
+              Submit
+            </Button>
+          </div>
         </form>
       </Form>
     </div>

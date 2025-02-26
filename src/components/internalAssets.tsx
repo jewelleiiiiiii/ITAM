@@ -1,6 +1,7 @@
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { columns, InternalAsset } from "./internalAssetsColumns";
 import { InternalDataTable } from "./internalTable";
+import AssetForm from "./asssetForm";
 
 export default function Internal() {
   const data: InternalAsset[] = [
@@ -61,7 +62,7 @@ export default function Internal() {
   ];
   
   return (
-    <div className="w-full h-screen bg-white rounded-xl m-10">
+    <div className="ml-[calc(7rem+10px)] mt-[calc(1.5rem+10px)] w-screen mr-10 mb-10 bg-white rounded-xl">
       <Tabs defaultValue="laptop" className="w-full">
         <TabsList className="w-full">
           <TabsTrigger value="laptop">LAPTOP</TabsTrigger>
@@ -75,6 +76,7 @@ export default function Internal() {
       </Tabs>
       <div className="container py-3 mt-0">
         <InternalDataTable columns={columns} data={data} />
+        <AssetForm />
       </div>
     </div>
   );

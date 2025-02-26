@@ -21,7 +21,7 @@ function App() {
   return (
     <>
       <Header />
-      <div className="flex flex-row bg-slate-50">
+      <div className="flex flex-row bg-slate-200">
         <Sidebar />
         <Routes>
           {routes.map(({ path, element }) => (

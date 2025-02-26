@@ -1,4 +1,5 @@
 import { columns, RepairAsset } from "./repairColumns";
+import RepairForm from "./RepairForm";
 import { RepairDataTable } from "./repairTable";
 
 export default function Repair() {
@@ -51,10 +52,10 @@ export default function Repair() {
   ];
 
   return (
-    <div className="w-full h-screen bg-white rounded-xl m-10 ">
-      <p className="font-medium text-lg mt-5 px-10">Repair Assets</p>
+<div className="ml-[calc(7rem+10px)] mt-[calc(1.5rem+10px)] w-screen mr-10 mb-10 bg-white rounded-xl">      <p className="font-medium text-lg mt-5 px-10">Repair Assets</p>
       <div className="container py-3 mt-0">
         <RepairDataTable columns={columns} data={data} />
+        <RepairForm/>
       </div>
     </div>
   );

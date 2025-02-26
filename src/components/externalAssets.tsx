@@ -60,8 +60,7 @@ function External() {
   ];
   return (
     <>
-      <div className="w-full h-screen bg-white rounded-xl m-10 ">
-        <p className="font-medium text-lg mt-5 px-10">
+<div className="ml-[calc(7rem+10px)] mt-[calc(1.5rem+10px)] w-screen mr-10 mb-10 bg-white rounded-xl">        <p className="font-medium text-lg mt-5 px-10">
           External Assets
         </p>
         <div className="container py-2 mt-0">
