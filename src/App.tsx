@@ -5,12 +5,12 @@ import Dashboard from "./components/dashboard";
 import Borrowed from "./components/borrowed";
 import Repair from "./components/repair";
 import Issuance from "./components/issuance";
-import Internal from "./components/internalAssets";
 import External from "./components/externalAssets";
+import Assets from "./components/assets";
 
 const routes = [
   { path: "/", element: <Dashboard /> },
-  { path: "/Internal", element: <Internal /> },
+  { path: "/Assets", element: <Assets /> },
   { path: "/External", element: <External /> },
   { path: "/Borrowed", element: <Borrowed /> },
   { path: "/Repair", element: <Repair /> },

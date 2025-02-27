@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Checkbox } from "@/components/ui/checkbox";
 
-export type InternalAsset = {
+export type Asset = {
   id: string;
   assetName: string;
   category: "External" | "Internal";
@@ -31,7 +31,7 @@ export type InternalAsset = {
   notes: string;
 };
 
-export const columns: ColumnDef<InternalAsset>[] = [
+export const columns: ColumnDef<Asset>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -124,7 +124,7 @@ export const columns: ColumnDef<InternalAsset>[] = [
   {
     id: "actions",
     cell: ({ row }) => {
-      const internal = row.original;
+      const asset = row.original;
 
       return (
         <DropdownMenu>
@@ -137,7 +137,7 @@ export const columns: ColumnDef<InternalAsset>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(internal.id)}
+              onClick={() => navigator.clipboard.writeText(asset.id)}
             >
               Copy Internal Asset ID
             </DropdownMenuItem>

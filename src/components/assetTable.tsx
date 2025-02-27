@@ -42,15 +42,15 @@ import {
 } from "@/components/ui/popover";
 import React from "react";
 
-interface InternalDataTableProps<TData, TValue> {
+interface AssetDataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
 }
 
-export function InternalDataTable<TData, TValue>({
+export function AssetDataTable<TData, TValue>({
   columns,
   data,
-}: InternalDataTableProps<TData, TValue>) {
+}: AssetDataTableProps<TData, TValue>) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []

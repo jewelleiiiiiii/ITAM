@@ -7,13 +7,9 @@ export const links = [
     label: "Dashboard",
   },
   {
-    path: "/Internal",
+    path: "/Assets",
     icon: ClipboardCheck,
     label: "Assets",
-    sublinks: [
-      { path: "/Internal", label: "Internal" },
-      { path: "/External", label: "External" },
-    ],
   },
   {
     path: "/Borrowed",
