@@ -17,7 +17,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import * as React from "react";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 
@@ -69,12 +68,11 @@ function AssetForm() {
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
   }
-  const [date, setDate] = React.useState<Date>();
 
   return (
-    <div className="p-10">
+    <div className="pl-5 pr-5">
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+        <form onSubmit={form.handleSubmit(onSubmit)} className=" space-y-4">
           <div className="flex gap-10">
             <div className="w-1/2">
               <FormField
@@ -124,8 +122,8 @@ function AssetForm() {
                         <SelectValue placeholder="Category" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="Internal">None</SelectItem>
-                        <SelectItem value="External">Laptop</SelectItem>
+                        <SelectItem value="External">External</SelectItem>
+                        <SelectItem value="Internal">Internal</SelectItem>
                       </SelectContent>
                     </Select>
                   </FormControl>
@@ -269,7 +267,7 @@ function AssetForm() {
               )}
             />
           </div>
-          <div className="flex gap-10">
+          <div className="flex gap-4">
             <div className="w-1/2">
               <FormField
                 control={form.control}

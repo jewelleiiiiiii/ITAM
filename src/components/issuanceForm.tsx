@@ -9,15 +9,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
-import * as React from "react";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 
@@ -51,7 +42,6 @@ function IssuanceForm() {
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
   }
-  const [date, setDate] = React.useState<Date>();
 
   return (
     <div className="p-10">

@@ -19,7 +19,6 @@ export type Asset = {
   subCategory: "Gantry Routers" | "Laptop" | "Printers" | "Access Point" | "Routers and Switch" | "Stocks";
   type: "None" | "Mouse" | "Keyboard" | "Printers" | "UPS Battery" | "Numeric Keypad";
   condition: "Good" | "Slightly Damaged" | "Damaged";
-  location: string;
   availabilityStatus: "Available" | "Not Available";
   serialNumber: string;
   specifications: string;
@@ -71,10 +70,6 @@ export const columns: ColumnDef<Asset>[] = [
   {
     accessorKey: "condition",
     header: "Condition",
-  },
-  {
-    accessorKey: "location",
-    header: "Location",
   },
   {
     accessorKey: "availabilityStatus",

@@ -5,7 +5,6 @@ import {
   getSortedRowModel,
   getPaginationRowModel,
   ColumnFiltersState,
-  VisibilityState,
   getFilteredRowModel,
   getCoreRowModel,
   useReactTable,
@@ -31,8 +30,7 @@ import {
 
 import { Button } from "@/components/ui/button";
 
-import { format } from "date-fns";
-import { Calendar as CalendarIcon, ListFilter, Plus } from "lucide-react";
+import { Calendar as CalendarIcon, ListFilter,  } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Calendar } from "@/components/ui/calendar";
 import {
@@ -55,8 +53,6 @@ export function AssetDataTable<TData, TValue>({
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
   );
-  const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>({});
 
   const [rowSelection, setRowSelection] = React.useState({});
   const table = useReactTable({
@@ -77,7 +73,7 @@ export function AssetDataTable<TData, TValue>({
   });
   const [date, setDate] = React.useState<Date>();
   return (
-    <div className="pl-10 pr-10 pb-10">
+    <div className="pl-10 pb-10 pr-10">
           <div className="flex justify-between">
             <div className="flex items-center py-4 justify-start">
               <Input
@@ -139,15 +135,7 @@ export function AssetDataTable<TData, TValue>({
                     })}
                 </DropdownMenuContent>
               </DropdownMenu>
-              <Button
-                variant={"outline"}
-                className={cn(
-                  "w-[30px] justify-center text-center font-normal",
-                  !date && "text-muted-foreground"
-                )}
-              >
-                <Plus className="m-auto h-4 w-4 p-auto" />
-              </Button>
+              
             </div>
           </div>
       <div className="rounded-md border-1px-gray">

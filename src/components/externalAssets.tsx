@@ -2,7 +2,7 @@ import { ExternalAsset, columns } from "./externalAssetsColumns";
 import { ExternalDataTable } from "./externalTable";
 
 function External() {
-  const data:ExternalAsset[] = [
+  const data: ExternalAsset[] = [
     {
       id: "728ed52f",
       assetName: "External Asset 3",
@@ -60,9 +60,8 @@ function External() {
   ];
   return (
     <>
-<div className="ml-[calc(7rem+10px)] mt-[calc(1.5rem+10px)] w-screen mr-10 mb-10 bg-white rounded-xl">        <p className="font-medium text-lg mt-5 px-10">
-          External Assets
-        </p>
+      <div className="bg-white rounded-xl">
+        <p className="font-medium text-lg px-10 pt-4">External Assets</p>
         <div className="container py-2 mt-0">
           <ExternalDataTable columns={columns} data={data} />
         </div>

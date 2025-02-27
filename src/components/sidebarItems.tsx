@@ -7,7 +7,7 @@ interface SidebarItemProps {
   sublinks?: SidebarItemProps[];
 }
 
-function SidebarItem({ icon: Icon, label, path, sublinks }: SidebarItemProps) {
+function SidebarItem({ icon: Icon, label, path, }: SidebarItemProps) {
   return (
     <>
         <Link to={path} className="flex flex-col items-center">

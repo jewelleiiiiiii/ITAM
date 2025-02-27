@@ -1,102 +1,55 @@
-
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { columns, Asset } from "./assetColumns";
-import { AssetDataTable } from "./assetTable";
-import AssetForm from "./asssetForm";
-import { ExternalDataTable } from "./externalTable";
+import { Button } from "./ui/button";
+import { Plus } from "lucide-react";
+import InternalAsset from "./internalAsset";
+import External from "./externalAssets";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import AssetForm from "./assetForm";
 
 export default function Assets() {
-  const data: Asset[] = [
-    {
-      id: "728ed52f",
-      assetName: "Internal Asset 3",
-      category: "Internal",
-      subCategory: "Laptop",
-      type: "None",
-      condition: "Good",
-      location: "ISTI Dept",
-      availabilityStatus: "Available",
-      serialNumber: "728ed52f",
-      specifications: "eme",
-      amount: 7000,
-      warrantyDuration: 2,
-      warrantyDueDate: "02/24/2027",
-      purchaseDate: "02/24/2025",
-      aging: 0,
-      notes: "eme",
-    },
-    {
-      id: "728ed52g",
-      assetName: "Internal Asset 1",
-      category: "Internal",
-      subCategory: "Stocks",
-      type: "Mouse",
-      condition: "Good",
-      location: "ISTI Dept",
-      availabilityStatus: "Available",
-      serialNumber: "728ed52f",
-      specifications: "eme",
-      amount: 1200,
-      warrantyDuration: 2,
-      warrantyDueDate: "02/24/2027",
-      purchaseDate: "02/24/2025",
-      aging: 0,
-      notes: "eme",
-    },
-    {
-      id: "728ed52h",
-      assetName: "Internal Asset 2",
-      category: "Internal",
-      subCategory: "Printers",
-      type: "None",
-      condition: "Good",
-      location: "ISTI Dept",
-      availabilityStatus: "Available",
-      serialNumber: "728ed52f",
-      specifications: "eme",
-      amount: 7000,
-      warrantyDuration: 2,
-      warrantyDueDate: "02/24/2027",
-      purchaseDate: "02/24/2025",
-      aging: 0,
-      notes: "eme",
-    },
-  ];
-
   return (
-    <div className="flex-col ml-[calc(7rem+10px)] mt-[calc(1.5rem+10px)] w-screen mr-10 mb-10">
-      <Tabs defaultValue="Internal" className="w-">
-        <TabsList className="rounded-xl w-full">
-          <TabsTrigger value="Internal" className="w-full text-black">Internal</TabsTrigger>
-          <TabsTrigger value="External" className="w-full text-black">External</TabsTrigger>
-        </TabsList>
-        <TabsContent value="Internal">
-          <div className="bg-white rounded-xl">
-            <Tabs defaultValue="laptop" className="w-full">
-              <TabsList className="w-full">
-                <TabsTrigger value="laptop">LAPTOP</TabsTrigger>
-                <TabsTrigger value="printer">PRINTER</TabsTrigger>
-                <TabsTrigger value="access_point">ACCESS POINT</TabsTrigger>
-                <TabsTrigger value="routers_and_switch">
-                  ROUTERS AND SWITCH
+    <>
+      <Dialog>
+        <div className="flex flex-col ml-[calc(7rem+10px)] mt-[calc(1.5rem+10px)] mr-[calc(2.5rem)] w-screen  mb-10">
+          <Tabs defaultValue="Internal" className="">
+            <div className="flex justify-between items-center w-full">
+              <TabsList className="rounded-lg w-1/4 p-2">
+                <TabsTrigger value="Internal" className="w-full">
+                  Internal
                 </TabsTrigger>
-                <TabsTrigger value="stocks">STOCKS</TabsTrigger>
+                <TabsTrigger value="External" className="w-full">
+                  External
+                </TabsTrigger>
               </TabsList>
-            </Tabs>
-            <div className="container py-3 mt-0">
-              <AssetDataTable columns={columns} data={data} />
-              <AssetForm />
+
+              <DialogTrigger asChild>
+                <Button className=" justify-items-center h-11 w-1/4 bg-[#233345] text-white">
+                  <Plus></Plus>
+                  <p>Add Assets</p>
+                </Button>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader className="pb-2">
+                  <DialogTitle className="text-center">Add New Asset</DialogTitle>
+                </DialogHeader>
+                <AssetForm />
+              </DialogContent>
             </div>
-          </div>
-        </TabsContent>
-      <TabsContent value="External">
-        <div className="bg-white rounded-xl mt-0">
-          <p className="font-medium text-lg px-10 pt-4">External Assets</p>
-          <div className="container py-2 mt-0">
-            <ExternalDataTable columns={columns} data={data} />
-          </div>
+            <TabsContent value="Internal">
+              <InternalAsset />
+            </TabsContent>
+            <TabsContent value="External">
+              <External />
+            </TabsContent>
+          </Tabs>
         </div>
-      </TabsContent></Tabs>
-    </div>
+      </Dialog>
+    </>
   );
 }
