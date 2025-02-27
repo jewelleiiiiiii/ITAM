@@ -29,7 +29,7 @@ export default function Assets() {
               </TabsList>
 
               <DialogTrigger asChild>
-                <Button className=" justify-items-center h-11 w-1/4 bg-[#233345] text-white">
+                <Button className=" justify-items-center h-11 w-fit bg-[#233345] text-white">
                   <Plus></Plus>
                   <p>Add Assets</p>
                 </Button>
